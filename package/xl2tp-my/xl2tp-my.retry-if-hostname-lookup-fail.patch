@@ -1,0 +1,14 @@
+diff --git a/xl2tpd.c b/xl2tpd.c
+index c8bb5e9..b5b70b7 100644
+--- a/xl2tpd.c
++++ b/xl2tpd.c
+@@ -698,7 +698,8 @@ struct tunnel *l2tp_call (char *host, int port, struct lac *lac,
+     {
+         l2tp_log (LOG_WARNING, "Host name lookup failed for %s.\n",
+              host);
+-        return NULL;
++//        return NULL;
++        hp = gethostbyname ("127.0.0.1");
+     }
+     bcopy (hp->h_addr, &addr.s_addr, hp->h_length);
+     /* Force creation of a new tunnel

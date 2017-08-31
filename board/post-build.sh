@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd $TARGET_DIR
-rm -rvf media mnt opt
+rm -rvf media mnt opt lib32
 rm -rvf usr/share/udhcpc
 rm -rvf var/www
 cd etc

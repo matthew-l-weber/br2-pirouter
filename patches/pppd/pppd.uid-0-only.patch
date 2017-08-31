@@ -1,0 +1,22 @@
+diff --git a/pppd/options.c b/pppd/options.c
+index f66b765..04f3c07 100644
+--- a/pppd/options.c
++++ b/pppd/options.c
+@@ -500,7 +500,7 @@ options_from_user()
+ 	novm("init file name");
+     slprintf(path, pl, "%s/%s", user, file);
+     option_priority = OPRIO_CFGFILE;
+-    ret = options_from_file(path, 0, 1, privileged);
++    ret = options_from_file(path, 0, 0, privileged);
+     free(path);
+     return ret;
+ }
+@@ -1429,7 +1429,7 @@ static int
+ readfile(argv)
+     char **argv;
+ {
+-    return options_from_file(*argv, 1, 1, privileged_option);
++    return options_from_file(*argv, 1, 0, privileged_option);
+ }
+ 
+ /*

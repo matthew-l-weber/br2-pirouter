@@ -1,0 +1,13 @@
+diff --git a/drivers/staging/rtl8188eu/core/rtw_cmd.c b/drivers/staging/rtl8188eu/core/rtw_cmd.c
+index f1f4788..b91df82 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_cmd.c
++++ b/drivers/staging/rtl8188eu/core/rtw_cmd.c
+@@ -859,7 +859,7 @@ static void dynamic_chk_wk_hdl(struct adapter *padapter, u8 *pbuf, int sz)
+ 	linked_status_chk(padapter);
+ 	traffic_status_watchdog(padapter);
+ 
+-	rtw_hal_dm_watchdog(padapter);
++//	rtw_hal_dm_watchdog(padapter);
+ }
+ 
+ static void lps_ctrl_wk_hdl(struct adapter *padapter, u8 lps_ctrl_type)
