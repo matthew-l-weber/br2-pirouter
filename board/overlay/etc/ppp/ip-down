@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Delete all routes to the remote
+ip route delete $5
+# Turn on LED#1
+echo 1 > /sys/class/leds/led1/brightness

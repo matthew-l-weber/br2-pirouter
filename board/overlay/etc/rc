@@ -1,0 +1,87 @@
+#!/bin/sh
+
+# set system name
+echo rpi > /proc/sys/kernel/hostname
+
+# set LED triggers
+echo cpu0 > /sys/class/leds/led0/trigger
+echo none > /sys/class/leds/led1/trigger
+# Turn on LED#1
+echo 1 > /sys/class/leds/led1/brightness
+
+# start syslog
+klogd
+syslogd -C1024
+
+# we use ipv6 only where it's needed
+echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+
+# configure loopback
+ip link set lo up
+echo 0 > /proc/sys/net/ipv6/conf/lo/disable_ipv6
+
+# wait for the Ethernet interface to come up
+while ! [ -e /sys/class/net/eth0 ]; do echo "eth0?"; sleep 1; done
+
+# set up VLAN subinterfaces
+ip link add link eth0 name eth0.1 type vlan id 1
+ip link add link eth0 name man type vlan id 2
+ip link set eth0 up
+ip link set eth0.1 up
+ip link set man up
+
+# start wireless
+modprobe r8188eu
+
+# wait for the wireless interface to come up
+while ! [ -e /sys/class/net/wlan0 ]; do echo "wlan0?"; sleep 1; done
+ip link set wlan0 up
+
+# create wired+wireless bridge
+brctl addbr lan
+brctl addif lan eth0.1
+brctl addif lan wlan0
+
+# configure bridge interface
+ip link set lan up
+ip addr add ${LAN_IP} dev lan
+echo 0 > /proc/sys/net/ipv6/conf/lan/disable_ipv6
+ip addr add ${LAN_IP6} dev lan
+
+# enable IPv4 forwarding
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+# start telnetd
+telnetd
+
+# create and configure 6to4 tunnel interface
+ip tunnel add wan6 mode sit remote ${SIT_REMOTE} ttl 255
+ip link set up dev wan6
+echo 0 > /proc/sys/net/ipv6/conf/wan6/disable_ipv6
+ip link set mtu 1440 dev wan6
+
+# set up IPv6 default route
+ip -6 route add default dev wan6
+
+# enable IPv6 forwarding
+echo 1 > /proc/sys/net/ipv6/conf/all/forwarding
+
+# set up firewall rules
+iptables-restore /etc/iptables.rules
+ip6tables-restore /etc/ip6tables.rules
+
+# start wireless access point
+hostapd_rtl -B /etc/hostapd_rtl.conf
+
+# start DHCP server
+udhcpd -S
+
+# start DHCP client on man interface
+udhcpc -i man -s /etc/udhcpc-hook.sh -S -R
+
+# start L2TP client
+modprobe l2tp_ppp
+xl2tpd -c /etc/xl2tpd.conf -C /var/run/l2tp-control
+
+# start IPv6 router advertisement daemon
+radvd -p /var/run/radvd.pid

@@ -1,0 +1,6 @@
+name ${CHAP_USER}
+pppol2tp_ifname wan
+ipparam beeline
+noauth
+nodefaultroute
+debug

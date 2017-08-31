@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Let's hope the remote address ($5) and the termination addresses of the L2TP session are same.
+# Set up an explicit route to the remote address so it's not sent via the default route.
+rt=$(ip route get $5 | head -1)
+ip route add $rt

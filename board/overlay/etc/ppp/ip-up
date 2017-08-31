@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# There may be some host routes via ppp interface. Delete them.
+ip route flush dev $1
+# Set up the default route
+ip -4 route add default dev $1
+# Set time
+ntpd -q
+# Update SIT endpoint at the remote
+sit-ctl wan6 $4 ${SIT_REMOTE}
+# Turn off LED#1
+echo 0 > /sys/class/leds/led1/brightness

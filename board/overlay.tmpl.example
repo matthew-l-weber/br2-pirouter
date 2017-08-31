@@ -1,0 +1,13 @@
+s/\${WIFI_SSID}//
+s/\${WIFI_PASS}//
+s/\${WIFI_CHAN}//
+s/\${SIT_REMOTE}//
+s/\${CHAP_USER}//
+s/\${CHAP_PASS}//
+s/\${LAN_IP}//
+s/\${LAN_IP6}//
+s/\${LAN_IP6_PREF}//
+s/\${DHCP_MIN}//
+s/\${DHCP_MAX}//
+s/\${DHCP_RTR}//
+s/\${DHCP_DNS}//
