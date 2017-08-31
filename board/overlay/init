@@ -1,0 +1,21 @@
+#!/bin/sh
+
+mount -t devtmpfs dev /dev
+mount -t proc proc /proc
+mount -t sysfs sys /sys
+mkdir /dev/pts
+mount -t devpts devpts /dev/pts
+
+# Extract configuration
+### rm -rf /etc ### XXX
+### tar xf /dev/mmcblk0p3
+
+# Initialize network
+sh /etc/rc &
+
+# Start shell on the console
+while true; do
+	echo New shell
+#	setsid /bin/sh < /dev/ttyAMA0 > /dev/ttyAMA0 2>&1
+	setsid sh -c 'exec sh < /dev/ttyAMA0 > /dev/ttyAMA0 2>&1'
+done

@@ -1,0 +1,3 @@
+source "$BR2_EXTERNAL_PIROUTER_PATH/package/sit-ctl/Config.in"
+source "$BR2_EXTERNAL_PIROUTER_PATH/package/hostapd-my/Config.in"
+source "$BR2_EXTERNAL_PIROUTER_PATH/package/xl2tp-my/Config.in"

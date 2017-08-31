@@ -1,0 +1,4 @@
+config BR2_PACKAGE_SIT_CTL
+	bool "sit-ctl"
+	help
+		Remotely controls sit tunnel endpoint.
