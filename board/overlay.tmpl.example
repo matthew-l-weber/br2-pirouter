@@ -11,3 +11,4 @@ s/\${DHCP_MIN}//
 s/\${DHCP_MAX}//
 s/\${DHCP_RTR}//
 s/\${DHCP_DNS}//
+s/\${ENCRYPTED_ROOT_PASS}//
