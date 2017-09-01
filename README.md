@@ -2,25 +2,25 @@
 Raspberry Pi-based router, firewall, and access point.
 
 ## Overview
-This repository contains a so-called *external tree* for using with Buildroot. With the help of the latter, it produces a minimalistic embedded Linux system, configured to work as a router, stateful firewall, and a wireless access point.
+This repository contains a so-called *external tree* for using with Buildroot. With the help of the latter, it produces a minimalistic embedded Linux system, configured to work as a router, a stateful firewall, and a wireless access point.
 
 ## Kernel
 The kernel supports the essential hardware only, and its feature set is reduced almost to the bare minimum. Here are some of its peculiarities:
 
 * No support for block devices and file systems (except for initramfs),
 * No support for UIDs other than 0,
-* No input devices other than serial console.
+* No I/O devices other than serial console.
 
 Another notable feature is that the kernel is configured to be multiplatform, i.e. to work without change on both ARMv6 (RPi1) and ARMv7 (RPi2). All platform-dependent settings are taken from a device tree blob.
 
 ## Init
-All traditional init systems are too complicated for this system. Here, `/init` is a simple shell script which mounts pseudo file systems, starts networking in background, and then keeps the shell always available on the console.
+All traditional init systems are too complicated for this system. Our `/init` is a simple shell script which mounts pseudo file systems, starts networking in background, and then keeps the shell always available on the console.
 
 ## File system
-The root file system is kept in initramfs and therefore volatile. Since the kernel has no support for block devices, it cannot access the SD card it was booted from, so to make a permanent change in the configuration, you have to rebuild the image. Not very convenient, perhaps, but secure and funny.
+The root file system is kept in initramfs and is therefore volatile. Since the kernel has no support for block devices, it cannot access the SD card it was booted from, so to make a permanent change in the configuration, you have to rebuild the image. Not very convenient, perhaps, but secure and funny.
 
 ## Standard C library
-The system uses `uClibc` as its standard C library. The library is also stripped down as much as possible. Thus, support for threads has been ditched out, since no programs here require it.
+The system uses `uClibc` as its standard C library. The library is also stripped down as much as possible. Thus, support for threads has been ditched out, since no programs in the system require it.
 
 ## Userspace programs
 Most essential programs are provided by `busybox`. Others are:
@@ -40,8 +40,8 @@ At build time, the configuration files and scripts in `/etc` are generated from 
 ## Examples
 Size of the compressed images:
 
-    -rw-r--r-- 1 alexandr1 adm 2427419 Aug 31 14:36 rootfs.cpio.gz
-    -rw-r--r-- 1 alexandr1 adm 1640256 Aug 30 14:37 zImage
+    -rw-r--r-- 1 alexandr1 adm 2175731 Sep  1 23:16 rootfs.cpio.gz
+    -rw-r--r-- 1 alexandr1 adm 1640504 Sep  1 23:13 zImage
 
 Process list of a live system:
 
