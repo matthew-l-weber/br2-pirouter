@@ -13,6 +13,9 @@ echo 1 > /sys/class/leds/led1/brightness
 klogd
 syslogd -C1024
 
+# ignore ARP requests coming from the "wrong" interfaces
+echo 2 > /proc/sys/net/ipv4/conf/all/arp_ignore
+
 # we use ipv6 only where it's needed
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 
