@@ -63,3 +63,8 @@ Process list of a live system:
       900 root       936 R    ps
     ~ #
 
+## Build
+This tree is compatible with the current long term support release of Buildroot (2017.02.x).
+
+## License
+All works by me are in the public domain.
