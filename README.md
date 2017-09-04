@@ -4,6 +4,9 @@ Raspberry Pi-based router, firewall, and access point.
 ## Overview
 This repository contains a so-called *external tree* for using with Buildroot. With the help of the latter, it produces a minimalistic embedded Linux system, configured to work as a router, a stateful firewall, and a wireless access point.
 
+## Hardware
+The system runs on Raspberry Pi models 1 and 2, equipped with a Realtek rtl8188eu Wi-Fi USB dongle, and with an external Ethernet switch capable of 802.1q VLAN tagging.
+
 ## Kernel
 The kernel supports the essential hardware only, and its feature set is reduced almost to the bare minimum. Here are some of its peculiarities:
 
@@ -64,7 +67,7 @@ Process list of a live system:
     ~ #
 
 ## Build
-This tree is compatible with the current long term support release of Buildroot (2017.02.x).
+This tree is compatible with the current Buildroot long term support release (2017.02.x).
 
 ## License
 All works by me are in the public domain.
