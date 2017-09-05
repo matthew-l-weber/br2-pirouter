@@ -71,3 +71,5 @@ This tree is compatible with the current Buildroot long term support release (20
 
 ## License
 All works by me are in the public domain.
+
+Packages `hostapd-realtek` and `xl2tp-no-openssl` are nothing but slightly modified versions of the corresponding stock Buildroot packages, so they retain their original copyright and license.
