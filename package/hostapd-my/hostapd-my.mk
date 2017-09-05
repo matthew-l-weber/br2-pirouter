@@ -7,6 +7,7 @@
 HOSTAPD_MY_VERSION = 2.6
 HOSTAPD_MY_SITE = http://hostap.epitest.fi/releases
 HOSTAPD_MY_SOURCE = hostapd-$(HOSTAPD_MY_VERSION).tar.gz
+HOSTAPD_MY_PATCH = https://github.com/pritambaral/hostapd-rtl871xdrv/raw/master/rtlxdrv.patch
 HOSTAPD_MY_SUBDIR = hostapd
 HOSTAPD_MY_CONFIG = $(HOSTAPD_MY_DIR)/$(HOSTAPD_MY_SUBDIR)/.config
 HOSTAPD_MY_DEPENDENCIES = host-pkgconf
