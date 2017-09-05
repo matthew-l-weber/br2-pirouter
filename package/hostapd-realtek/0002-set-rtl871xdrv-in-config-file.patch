@@ -1,0 +1,18 @@
+diff --git a/hostapd/hostapd.conf b/hostapd/hostapd.conf
+index fa9a855..7642055 100644
+--- a/hostapd/hostapd.conf
++++ b/hostapd/hostapd.conf
+@@ -20,11 +20,8 @@ interface=wlan0
+ # interface is also created.
+ #bridge=br0
+ 
+-# Driver interface type (hostap/wired/none/nl80211/bsd);
+-# default: hostap). nl80211 is used with all Linux mac80211 drivers.
+-# Use driver=none if building hostapd as a standalone RADIUS server that does
+-# not control any wireless/wired driver.
+-# driver=hostap
++# Driver interface type
++driver=rtl871xdrv
+ 
+ # Driver interface parameters (mainly for development testing use)
+ # driver_params=<params>

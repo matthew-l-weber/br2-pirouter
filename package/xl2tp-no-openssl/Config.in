@@ -1,8 +1,7 @@
-config BR2_PACKAGE_XL2TP_MY
-	bool "xl2tp lite"
+config BR2_PACKAGE_XL2TP_NO_OPENSSL
+	bool "xl2tp w/o OpenSSL"
 	depends on BR2_USE_MMU # fork()
 	select BR2_PACKAGE_LIBPCAP
-###	select BR2_PACKAGE_OPENSSL
 	help
 	  Layer 2 Tunnelling Protocol (RFC2661).
 

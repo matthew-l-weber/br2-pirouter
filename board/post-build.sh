@@ -11,7 +11,7 @@ rm -rvf var/www
 cd etc
 rm -rvf profile* fstab mtab network
 cd ../usr/bin
-rm -vf pfc pon poff
+rm -vf pfc pon poff hostapd_cli
 cd ../sbin
 rm -vf chat pppdump pppoe-discovery pppstats radvdump xl2tpd-control
 
