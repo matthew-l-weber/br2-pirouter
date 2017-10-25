@@ -1,19 +1,24 @@
 #!/bin/sh
 
-ovl=$2/board/overlay
-tmpl=$2/board/overlay.tmpl
+BOARD_DIR="$(dirname $0)"
+
+ovl=$BOARD_DIR/overlay
+tmpl=$BOARD_DIR/overlay.tmpl
 
 # Remove unnecessary files
 cd $TARGET_DIR
-rm -rvf media mnt opt lib32
+rm -rvf media mnt opt run
 rm -rvf usr/share/udhcpc
-rm -rvf var/www
 cd etc
-rm -rvf profile* fstab mtab network
+rm -rvf mtab network profile*
 cd ../usr/bin
 rm -vf pfc pon poff hostapd_cli
 cd ../sbin
 rm -vf chat pppdump pppoe-discovery pppstats radvdump xl2tpd-control
+
+# Create /var/run
+cd $TARGET_DIR
+mkdir -pv var/run
 
 # Perform template substitution
 cd $TARGET_DIR

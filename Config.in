@@ -1,3 +1,1 @@
 source "$BR2_EXTERNAL_PIROUTER_PATH/package/sit-ctl/Config.in"
-source "$BR2_EXTERNAL_PIROUTER_PATH/package/hostapd-realtek/Config.in"
-source "$BR2_EXTERNAL_PIROUTER_PATH/package/xl2tp-no-openssl/Config.in"

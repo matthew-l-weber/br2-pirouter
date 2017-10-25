@@ -74,7 +74,7 @@ iptables-restore /etc/iptables.rules
 ip6tables-restore /etc/ip6tables.rules
 
 # start wireless access point
-hostapd_rtl -B /etc/hostapd_rtl.conf
+hostapd -B /etc/hostapd.conf
 
 # start DHCP server
 udhcpd -S
