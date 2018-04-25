@@ -16,9 +16,9 @@ rm -vf pfc pon poff hostapd_cli
 cd ../sbin
 rm -vf chat pppdump pppoe-discovery pppstats radvdump xl2tpd-control
 
-# Create /var/run
+# Create /run and /var/run
 cd $TARGET_DIR
-mkdir -pv var/run
+mkdir -pv run var/run
 
 # Perform template substitution
 cd $TARGET_DIR

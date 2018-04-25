@@ -35,8 +35,13 @@ available on the console.
 The root file system is kept in initramfs and is therefore volatile.
 Since the kernel has no support for block devices, it cannot access the
 SD card it was booted from, so to make a permanent change in the
-configuration, you have to rebuild the image. Not very convenient,
+configuration you have to rebuild the image. Not very convenient,
 perhaps, but secure and funny.
+
+## The C library
+The system uses `uClibc` as its C library. The features of the library
+are also reduced to a minimum. For example, it has no support for
+threads.
 
 ## Userspace programs
 Most essential programs are provided by `busybox`. The others are:
@@ -57,8 +62,8 @@ generated from templates using settings in `board/overlay.tmpl`.
 ## Examples
 Size of the compressed images:
 
-    -rw-r--r-- 1 alexandr1 adm 2529550 Oct 21 21:14 rootfs.cpio.gz
-    -rw-r--r-- 1 alexandr1 adm 1648168 Oct 21 21:14 zImage
+    -rw-r--r-- 1 alexandr1 adm 2258423 Apr 25 18:57 rootfs.cpio.gz
+    -rw-r--r-- 1 alexandr1 adm 1655112 Apr 25 17:53 zImage
 
 Process list of a live system:
 
