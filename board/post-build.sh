@@ -7,7 +7,7 @@ tmpl=$BOARD_DIR/overlay.tmpl
 
 # Remove unnecessary files
 cd $TARGET_DIR
-rm -rvf media mnt opt run
+rm -rvf media mnt opt
 rm -rvf usr/share/udhcpc
 cd etc
 rm -rvf mtab network profile*
@@ -15,10 +15,6 @@ cd ../usr/bin
 rm -vf pfc pon poff hostapd_cli
 cd ../sbin
 rm -vf chat pppdump pppoe-discovery pppstats radvdump xl2tpd-control
-
-# Create /run and /var/run
-cd $TARGET_DIR
-mkdir -pv run var/run
 
 # Perform template substitution
 cd $TARGET_DIR
