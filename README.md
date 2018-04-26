@@ -62,8 +62,9 @@ generated from templates using settings in `board/overlay.tmpl`.
 ## Examples
 Size of the compressed images:
 
-    -rw-r--r-- 1 alexandr1 adm 2257957 Apr 25 22:35 rootfs.cpio.gz
-    -rw-r--r-- 1 alexandr1 adm 1658216 Apr 25 22:21 zImage
+    -rw-r--r-- 1 alexandr1 adm 2252329 Apr 26 17:11 rootfs.cpio.gz
+    -rw-r--r-- 1 alexandr1 adm 1658216 Apr 26 17:11 zImage
+
 
 Process list of a live system:
 
