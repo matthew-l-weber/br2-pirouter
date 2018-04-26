@@ -12,7 +12,7 @@ rm -rvf usr/share/udhcpc
 cd etc
 rm -rvf mtab network profile*
 cd ../usr/bin
-rm -vf pfc pon poff hostapd_cli
+rm -vf pfc pon poff hostapd_cli iptables-xml
 cd ../sbin
 rm -vf chat pppdump pppoe-discovery pppstats radvdump xl2tpd-control
 
