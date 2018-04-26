@@ -1,0 +1,14 @@
+diff --git a/networking/udhcp/dhcpc.c b/networking/udhcp/dhcpc.c
+index bd9e8fdc2..b84d3e4d0 100644
+--- a/networking/udhcp/dhcpc.c
++++ b/networking/udhcp/dhcpc.c
+@@ -700,7 +700,8 @@ static int bcast_or_ucast(struct dhcp_packet *packet, uint32_t ciaddr, uint32_t
+ 		return udhcp_send_kernel_packet(packet,
+ 			ciaddr, CLIENT_PORT,
+ 			server, SERVER_PORT,
+-			/*send_flags: "to hosts only on directly connected networks" */ MSG_DONTROUTE
++//			/*send_flags: "to hosts only on directly connected networks" */ MSG_DONTROUTE
++			0
+ 		);
+ 	}
+ 	return raw_bcast_from_client_config_ifindex(packet, ciaddr);
