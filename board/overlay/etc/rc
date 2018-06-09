@@ -72,6 +72,8 @@ echo 1 > /proc/sys/net/ipv6/conf/all/forwarding
 # set up firewall rules
 iptables-restore /etc/iptables.rules
 ip6tables-restore /etc/ip6tables.rules
+# load FTP NAT helper
+modprobe nf_nat_ftp
 
 # start wireless access point
 hostapd -B /etc/hostapd.conf
