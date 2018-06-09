@@ -3,16 +3,22 @@
 :INPUT DROP [0:0]
 :FORWARD DROP [0:0]
 :OUTPUT ACCEPT [551:50536]
--A INPUT -m state --state ESTABLISHED -j ACCEPT
+-A INPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
 -A INPUT -p icmpv6 -j ACCEPT
--A INPUT -i lan -m state --state NEW -j ACCEPT
--A INPUT -m state --state RELATED -j ACCEPT
+-A INPUT -i lan -m conntrack --ctstate NEW -j ACCEPT
+-A INPUT -m conntrack --ctstate RELATED -j ACCEPT
 -A INPUT -j REJECT --reject-with icmp6-adm-prohibited
--A FORWARD -m state --state ESTABLISHED -j ACCEPT
--A FORWARD -i lan -p tcp -m state --state NEW -j ACCEPT
--A FORWARD -i lan -p udp -m state --state NEW -j ACCEPT
--A FORWARD -p icmpv6 -m state --state NEW -j ACCEPT
--A FORWARD -m state --state RELATED -j ACCEPT
+-A FORWARD -m conntrack --ctstate ESTABLISHED -j ACCEPT
+-A FORWARD -i lan -p tcp -m conntrack --ctstate NEW -j ACCEPT
+-A FORWARD -i lan -p udp -m conntrack --ctstate NEW -j ACCEPT
+-A FORWARD -p icmpv6 -m conntrack --ctstate NEW -j ACCEPT
+-A FORWARD -m conntrack --ctstate RELATED -j ACCEPT
 -A FORWARD -j REJECT --reject-with icmp6-adm-prohibited
 COMMIT
 # Completed on Tue May 24 15:08:04 2016
+# Added manually
+*raw
+:PREROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A PREROUTING -p tcp -m tcp --dport 21 -j CT --helper ftp
+COMMIT
