@@ -9,6 +9,7 @@ s/\${LAN_IP6}//
 s/\${LAN_IP6_PREF}//
 s/\${DHCP_MIN}//
 s/\${DHCP_MAX}//
+s/\${DHCP_MASK}//
 s/\${DHCP_RTR}//
 s/\${DHCP_DNS}//
 s/\${ENCRYPTED_ROOT_PASS}//
