@@ -62,9 +62,8 @@ generated from templates using settings in `board/overlay.tmpl`.
 ## Examples
 Size of the compressed images:
 
-    -rw-r--r-- 1 alexandr1 adm 2252329 Apr 26 17:11 rootfs.cpio.gz
-    -rw-r--r-- 1 alexandr1 adm 1658216 Apr 26 17:11 zImage
-
+    -rw-r--r-- 1 alexandr1 adm 2244860 Jun  9 16:59 rootfs.cpio.gz
+    -rw-r--r-- 1 alexandr1 adm 1658592 Jun  9 16:59 zImage
 
 Process list of a live system:
 
@@ -87,7 +86,8 @@ Process list of a live system:
     ~ #
 
 ## Build
-This tree is compatible with the current `master` Buildroot branch.
+This tree is compatible with the recent stable Buildroot release
+(2018.05.x).
 
 ## License
 All works by me are in the public domain.
