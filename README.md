@@ -86,8 +86,22 @@ Process list of a live system:
     ~ #
 
 ## Build
-This tree is compatible with the recent stable Buildroot release
-(2018.05.x).
+This tree is compatible with the 2018.05.3 stable Buildroot release.
+
+Example Build Steps
+
+    cd
+    git clone https://github.com/buildroot/buildroot.git # Retrieve tip of Buildroot
+    git clone https://github.com/aimukhin/br2-pirouter.git # Retreive this external tree 
+    cd buildroot ; git checkout 2018.05.3  # Setup configuration for build
+    make BR2_EXTERNAL=~/br2-pirouter pirouter_defconfig
+    ./utils/brmake || tail br.log
+
+A more detailed use of Buildroot can be found in the manual and the specific section on using the br2_external external tree feature for customizations.
+
+https://buildroot.org/downloads/manual/manual.html
+
+https://buildroot.org/downloads/manual/manual.html#outside-br-custom
 
 ## License
 All works by me are in the public domain.
